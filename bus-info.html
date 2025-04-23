@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Available Buses</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* Optional: Animation styles */
+    .slide-up {
+      animation: slideUp 0.5s ease-in-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Available Buses</a>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row" id="bus-list"></div>
+  </div>
+
+  <script>
+    const buses = [
+      { name: "Bus A1", time: "08:30 AM", price: 15 },
+      { name: "Bus B2", time: "10:00 AM", price: 20 },
+      { name: "Bus C3", time: "02:00 PM", price: 18 },
+      { name: "Bus D4", time: "06:45 PM", price: 22 },
+    ];
+
+    const from = localStorage.getItem("from");
+    const to = localStorage.getItem("to");
+    const date = localStorage.getItem("date");
+
+    const busList = document.getElementById("bus-list");
+
+    buses.forEach(bus => {
+      const col = document.createElement("div");
+      col.className = "col-md-4 d-flex align-items-stretch";
+      col.innerHTML = `
+        <div class="card bus-card animate-card mb-4 h-100 slide-up" onclick="selectBus('${bus.name}', '${bus.time}', '${bus.price}')">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">${bus.name}</h5>
+              <p class="mb-1">🕒 <strong>${bus.time}</strong></p>
+              <p class="mb-3">💰 <strong>$${bus.price}</strong></p>
+            </div>
+            <button class="btn btn-success w-100 mt-auto">Select Bus</button>
+          </div>
+        </div>
+      `;
+      busList.appendChild(col);
+    });
+
+    function selectBus(busName, time, price) {
+      localStorage.setItem("busName", busName);
+      localStorage.setItem("busTime", time);
+      localStorage.setItem("busPrice", price);
+      window.location.href = "seat-selection.html";
+    }
+  </script>
+</body>
+</html>

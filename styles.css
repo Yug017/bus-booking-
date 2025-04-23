@@ -1,0 +1,55 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.seat {
+    transition: background 0.3s ease-in-out;
+}
+
+.seat.btn-success {
+    animation: seatSelect 0.3s ease-in-out;
+}
+
+@keyframes seatSelect {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.animate-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .slide-up {
+    animation: slideUp 0.5s ease-in-out;
+  }
+
+  .container {
+  max-width: 960px;
+}
+
+.container {
+    max-width: 960px;
+  }
+  
